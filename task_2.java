@@ -15,7 +15,7 @@
 
 
 
-import java.io.FileReader;
+import java.io.File;
 import java.util.Scanner;
 
 
@@ -24,20 +24,16 @@ public class task_2 {
      
     public static void main(String[] args) throws Exception {
 
-        FileReader rd = new FileReader("task_2.json");
-        Scanner st = new Scanner(rd);
-        String s = st.nextLine();
-        st.close();
-        rd.close();
-        s = s.substring(1, s.length() - 1);
-        s = s.replaceAll("\"", "");
-        String[] words = s.split(",");
-        for (int i = 0; i < words.length; i++) {
-            String[] temp = words[i].split(": ");
-            if (!temp[1].equals("null")) {
-                System.out.println(temp[0] + " " + temp[1]);
-            }
+        File file = new File("task_2.json");
+        Scanner scanner = new Scanner(file); 
+        String line = scanner.nextLine();
+        String line2 = line.replace("{", "").replace("}","").replace(":",",");
+        String [] lineData = line2.split(",");
+        String family = lineData[1];
+        String mark = lineData[3];
+        String subject = lineData[5];
+        // System.out.println(line2);
+        scanner.close();        
+        System.out.printf("Студент %s получил %s по предмету %s  " , family, mark, subject);
         }
-    }
-
 }
