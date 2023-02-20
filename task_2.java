@@ -32,7 +32,6 @@ public class task_2 {
         String family = lineData[1];
         String mark = lineData[3];
         String subject = lineData[5];
-        // System.out.println(line2);
         scanner.close();        
         System.out.printf("Студент %s получил %s по предмету %s  " , family, mark, subject);
         }
